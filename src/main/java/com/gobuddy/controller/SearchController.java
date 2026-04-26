@@ -18,12 +18,6 @@ public class SearchController {
 
     private final SearchService searchService;
 
-    /**
-     * GET /api/search?from=Delhi&to=Mumbai&date=2024-06-15&type=ALL
-     *
-     * type options: ALL | BUS | TRAIN | FLIGHT
-     * Authentication: optional (saves history when logged in)
-     */
     @GetMapping
     public ResponseEntity<List<TransportOptionResponse>> search(
             @RequestParam String from,

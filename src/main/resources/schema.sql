@@ -1,7 +1,4 @@
--- ============================================================
---   GoBuddy Database Schema
---   Run this script before starting the Spring Boot application
--- ============================================================
+
 
 CREATE DATABASE IF NOT EXISTS gobuddy_db
     CHARACTER SET utf8mb4

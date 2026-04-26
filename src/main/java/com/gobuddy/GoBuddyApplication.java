@@ -4,7 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GoBuddyApplication {
+public class
+GoBuddyApplication {
     public static void main(String[] args) {
         SpringApplication.run(GoBuddyApplication.class, args);
     }

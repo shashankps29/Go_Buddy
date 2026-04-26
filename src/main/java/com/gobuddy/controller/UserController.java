@@ -21,20 +21,11 @@ public class UserController {
     private final UserService userService;
     private final SearchService searchService;
 
-    /**
-     * GET /api/users/profile
-     * Returns the logged-in user's profile details.
-     */
     @GetMapping("/profile")
     public ResponseEntity<UserProfileResponse> getProfile(Principal principal) {
         UserProfileResponse profile = userService.getProfile(principal.getName());
         return ResponseEntity.ok(profile);
     }
-
-    /**
-     * PUT /api/users/profile
-     * Body: { name, phoneNumber }
-     */
     @PutMapping("/profile")
     public ResponseEntity<UserProfileResponse> updateProfile(
             @Valid @RequestBody UpdateProfileRequest request,
@@ -43,10 +34,6 @@ public class UserController {
         return ResponseEntity.ok(updated);
     }
 
-    /**
-     * GET /api/users/history
-     * Returns the last 10 travel searches of the logged-in user.
-     */
     @GetMapping("/history")
     public ResponseEntity<List<SearchHistoryResponse>> getHistory(Principal principal) {
         List<SearchHistoryResponse> history = searchService.getHistory(principal.getName());

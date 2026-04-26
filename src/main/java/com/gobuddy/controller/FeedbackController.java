@@ -19,11 +19,6 @@ public class FeedbackController {
 
     private final FeedbackService feedbackService;
 
-    /**
-     * POST /api/feedback
-     * Body: { message, rating }
-     * Auth: required
-     */
     @PostMapping
     public ResponseEntity<FeedbackResponse> submit(
             @Valid @RequestBody FeedbackRequest request,
@@ -32,10 +27,6 @@ public class FeedbackController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    /**
-     * GET /api/feedback
-     * Returns all feedback (admin can also call this).
-     */
     @GetMapping
     public ResponseEntity<List<FeedbackResponse>> getAll() {
         return ResponseEntity.ok(feedbackService.getAll());

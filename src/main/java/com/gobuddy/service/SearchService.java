@@ -22,10 +22,6 @@ public class SearchService {
     private final SearchRepository searchRepository;
     private final UserRepository userRepository;
 
-    /**
-     * Main aggregation method — fetches from all transport APIs (mocked),
-     * saves search history if user is authenticated, returns combined results.
-     */
     public List<TransportOptionResponse> search(String from, String to,
                                                 LocalDate date, String type,
                                                 String userEmail) {
@@ -69,7 +65,6 @@ public class SearchService {
         );
     }
 
-    /** Simulates IRCTC API response */
     private List<TransportOptionResponse> fetchTrainOptions(String from, String to, LocalDate date) {
         return List.of(
             buildOption("TRAIN", "Rajdhani Express (12951)", new BigDecimal("1200"), "16h 35m", "16:55", "09:30", "https://www.irctc.co.in", from, to),
@@ -78,8 +73,6 @@ public class SearchService {
             buildOption("TRAIN", "Garib Rath (12909)",       new BigDecimal("620"),  "17h 25m", "15:30", "08:55", "https://www.irctc.co.in", from, to)
         );
     }
-
-    /** Simulates Skyscanner / flight API response */
     private List<TransportOptionResponse> fetchFlightOptions(String from, String to, LocalDate date) {
         return List.of(
             buildOption("FLIGHT", "IndiGo 6E-201",  new BigDecimal("3500"), "2h 05m", "06:15", "08:20", "https://www.goindigo.in",   from, to),
@@ -106,7 +99,6 @@ public class SearchService {
                 .build();
     }
 
-    /** Returns last 10 searches for a user */
     public List<SearchHistoryResponse> getHistory(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
